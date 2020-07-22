@@ -1,0 +1,9 @@
+version: '3.4'
+services:
+  demowebapp:
+    image: misadockerhub.vn:30100/misa/demo:1.0.0
+    build:
+      context: .
+      dockerfile: MISA.Demo/Demo.WebApp.UI/Dockerfile
+    ports:
+      - 3030:80
