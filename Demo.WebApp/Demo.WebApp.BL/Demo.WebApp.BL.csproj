@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.WebApp.Common\Demo.WebApp.Common.csproj" />
+    <ProjectReference Include="..\Demo.WebApp.DL\Demo.WebApp.DL.csproj" />
+    <ProjectReference Include="..\Demo.WebApp.Entities\Demo.WebApp.Entities.csproj" />
+  </ItemGroup>
+
+</Project>
