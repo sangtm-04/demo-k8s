@@ -24,8 +24,10 @@ class Customer {
                 contentType: 'application/json'
             }).done(function (res) {
                 alert(res.message);
-                $('input.form-control').val('');
+                var customerName = $('input.form-control').val();
+                $('input.form-control').val('')
                 $('input.form-control').focus();
+                $('.list-customer').append(`<div>${customerName}</div>`)
             }).fail(function (res) {
                 console.log(res.message);
             });
