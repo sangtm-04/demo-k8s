@@ -2,3 +2,33 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+$(document).ready(function () {
+    new Customer();
+});
+
+class Customer {
+    constructor() {
+        $('input.form-control').focus();
+        this.initEvents();
+    }
+
+    initEvents() {
+        $(document).on('click', '.btn-submit', function () {
+            const customer = {
+                CustomerName: $('input.form-control').val()
+            };
+            $.ajax({
+                method: 'POST',
+                url: '/api/customers',
+                data: JSON.stringify(customer),
+                contentType: 'application/json'
+            }).done(function (res) {
+                alert(res.message);
+                $('input.form-control').val('');
+                $('input.form-control').focus();
+            }).fail(function (res) {
+                console.log(res.message);
+            });
+        });
+    }
+}
