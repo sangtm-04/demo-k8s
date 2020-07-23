@@ -21,6 +21,11 @@ namespace Demo.WebApp.UI.Controllers.API
             _customerRepository = customerRepository;
         }
 
+        /// <summary>
+        /// Thêm mới một khách hàng
+        /// </summary>
+        /// <param name="customer">Đối tượng khách hàng</param>
+        /// <returns></returns>
         [HttpPost]
         public AjaxResult InsertCustomer([FromBody] Customer customer)
         {
@@ -32,7 +37,8 @@ namespace Demo.WebApp.UI.Controllers.API
                 {
                     Code = (int)HttpStatusCode.OK,
                     Success = true,
-                    Message = "Thêm mới khách hàng thành công."
+                    Message = "Thêm mới khách hàng thành công.",
+                    Data = result
                 };
             }
             else
@@ -45,5 +51,35 @@ namespace Demo.WebApp.UI.Controllers.API
                 };
             }
         } 
+
+        /// <summary>
+        /// Lấy danh sách khách hàng
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public AjaxResult GetCustomers()
+        {
+            var customers = _customerRepository.GetCustomers().ToList();
+            if (customers.Count > 0)
+            {
+                return new AjaxResult
+                {
+                    Code = (int)HttpStatusCode.OK,
+                    Success = true,
+                    Message = "Lấy dữ liệu thành công.",
+                    Data = customers
+                };
+            }
+            else
+            {
+                return new AjaxResult
+                {
+                    Code = (int)HttpStatusCode.OK,
+                    Success = true,
+                    Message = "Không có dữ liệu.",
+                    Data = -1
+                };
+            }
+        }
     }
 }

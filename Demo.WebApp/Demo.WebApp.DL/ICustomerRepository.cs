@@ -8,5 +8,6 @@ namespace Demo.WebApp.DL
     public interface ICustomerRepository
     {
         int Insert(Customer customer);
+        IEnumerable<Customer> GetCustomers();
     }
 }
